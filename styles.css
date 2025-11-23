@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #202d23 0%, #3ba657 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', 'Consolas', monospace;
+}
+
+.container {
+  background: rgba(24, 24, 24, 0.97);
+  border: 3px solid #f0c22c;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px #0008;
+  padding: 2.5em 3em;
+  text-align: center;
+  max-width: 400px;
+}
+
+.logo {
+  width: 110px;
+  margin-bottom: 20px;
+  border: 2px solid #54de85;
+  border-radius: 16px;
+  background: #151d13;
+  box-shadow: 0 0 25px #57ed55aa;
+}
+
+h1 {
+  color: #f0c22c;
+  letter-spacing: 1px;
+  margin-bottom: 0.3em;
+}
+
+.highlight {
+  color: #54de85;
+  text-shadow: 0 2px 8px #1d4f1a77;
+}
+
+.subtitle {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 2em;
+}
+
+.server-ip {
+  background: #2b4222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  border-radius: 10px;
+  margin-bottom: 1.3em;
+  padding: 0.7em 0.5em;
+}
+
+.server-ip input {
+  background: #242c1a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6em 1em;
+  font-size: 1.1em;
+  font-family: inherit;
+  width: 145px;
+  text-align: center;
+}
+
+.server-ip button {
+  background: #f0c22c;
+  border: none;
+  color: #202;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.4em 1.2em;
+  transition: background 0.2s;
+}
+
+.server-ip button:hover {
+  background: #ab8914;
+  color: #fff;
+}
+
+.join-btn {
+  margin-top: 1.4em;
+  display: inline-block;
+  background: #54de85;
+  color: #222;
+  padding: 0.9em 2em;
+  font-size: 1.15em;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 15px #44cc448f;
+  transition: background 0.3s, color 0.3s;
+}
+
+.join-btn:hover {
+  background: #f0c22c;
+  color: #19552d;
+}
+
+footer {
+  margin-top: 2em;
+  color: #ccc;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
