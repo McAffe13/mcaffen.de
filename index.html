@@ -1,69 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>McAffen.de – Minecraft Server</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="Minecraft-Affen.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MoKoCraft — Minecraft Server</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <div class="logo-area">
-            <img src="Minecraft-Affen.png" alt="Minecraft Affen Logo" class="logo" />
-            <span class="nav-title">McAffen.de</span>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="mascot" src="assets/Minecraft-Affen.png" alt="Server-Maskottchen" />
+      <div class="title-block">
+        <h1>Willkommen auf <span class="accent">MoKoCraft</span></h1>
+        <p class="subtitle">Dein freundlicher Minecraft-Server — baue, kämpfe, entdecke!</p>
+        <div class="actions">
+          <a class="btn primary" href="#join">Jetzt beitreten</a>
+          <a class="btn" href="#info">Server Info</a>
+          <a class="btn" href="#rules">Regeln</a>
         </div>
-        <ul class="navbar">
-            <li><a href="#">Home</a></li>
-            <li><a href="#regelwerk">Regelwerk</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-            <li><a href="#server">Server-IP</a></li>
-        </ul>
-    </nav>
-    <!-- Header -->
-    <header>
-        <img src="Minecraft-Affen.png" alt="Minecraft Affen Logo" class="hero-logo" />
-        <h1>Willkommen auf <span class="highlight">McAffen.de</span></h1>
-        <p class="subtitle">Minecraft-Server – Verrückt, verspielt & einzigartig</p>
-        <div class="server-ip-block" id="server">
-            <span class="ip-label">Server-IP:</span>
-            <input type="text" id="serverIp" value="play.McAffen.de" readonly>
-            <button class="shiny-btn" onclick="copyIP()">Kopieren</button>
-        </div>
-        <a href="minecraft://?addExternalServer=McAffen.de|play.McAffen.de" class="shiny-btn join-btn">Minecraft öffnen & beitreten!</a>
-    </header>
-    <!-- Farbbunte Sectionen / mini Unterseiten -->
-    <main>
-        <section class="colorblock rules" id="regelwerk">
-            <h2>Regelwerk 📜</h2>
-            <p>Kurz & knapp: Keine Beleidigungen, kein Griefing, Spaß haben! <br/>Das ausführliche Regelwerk findest du <a href="#">hier</a>.</p>
-        </section>
-        <section class="colorblock team" id="team">
-            <h2>Team 👥</h2>
-            <ul class="team-list">
-                <li><span>McAffe13</span> – Owner, Affen-Dompteur</li>
-                <li><span>BananaKing</span> – Admin</li>
-                <li><span>CocoNerd</span> – Supporter</li>
-            </ul>
-        </section>
-        <section class="colorblock kontakt" id="kontakt">
-            <h2>Kontakt 📧</h2>
-            <p>Du hast Fragen oder brauchst Hilfe?<br><a href="mailto:support@mcaffen.de">support@mcaffen.de</a><br>oder im Spiel /discord.</p>
-        </section>
-    </main>
-    <footer>
-        <small>© 2025 McAffen.de | <a href="#regelwerk">Regelwerk</a> | <a href="#team">Team</a> | <a href="#kontakt">Kontakt</a></small>
-    </footer>
-    <script>
-        function copyIP() {
-            const ipField = document.getElementById('serverIp');
-            ipField.select();
-            ipField.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            alert("Server-IP kopiert: " + ipField.value);
-        }
-    </script>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="info" class="card">
+      <h2>Server Info</h2>
+      <ul class="info-list">
+        <li><strong>IP:</strong> <code>play.mcaffen.de</code></li>
+        <li><strong>Version:</strong> 1.20+</li>
+        <li><strong>Spielmodi:</strong> Survival, Minigames, Kreativ</li>
+      </ul>
+    </section>
+
+    <section id="rules" class="card">
+      <h2>Regeln</h2>
+      <ol class="rules">
+        <li>Kein Griefing oder unnötige Zerstörung.</li>
+        <li>Kein Hacken, Cheaten oder unerlaubte Mods.</li>
+        <li>Respektvoller Umgang mit allen Spielern.</li>
+        <li>Keine Beleidigungen, Spam oder rassistische Inhalte.</li>
+        <li>Kein Werbung machen ohne Erlaubnis.</li>
+        <li>Bauen nur in eigenen oder freigegebenen Gebieten.</li>
+        <li>Admins haben immer das letzte Wort.</li>
+      </ol>
+    </section>
+
+    <section id="features" class="card grid">
+      <div>
+        <h3>Community</h3>
+        <p>Freundliche Spieler, Discord-Events und tägliche Challenges.</p>
+      </div>
+      <div>
+        <h3>Rank & Belohnungen</h3>
+        <p>Ränge, Belohnungen und kosmetische Items über Fortschritt.</p>
+      </div>
+      <div>
+        <h3>Sichere Welt</h3>
+        <p>Backups, Anti-Grief Plugins und klares Regelwerk.</p>
+      </div>
+    </section>
+
+    <section id="join" class="card join-card">
+      <h2>So kannst du beitreten</h2>
+      <ol>
+        <li>Starte Minecraft (Version 1.20+).</li>
+        <li>Gebe die IP <code>play.mcaffen.de</code> ein.</li>
+        <li>Viel Spaß!</li>
+      </ol>
+      <a class="btn big primary" href="#">IP kopieren</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 MoKoCraft — Viel Spaß beim Zocken!</small>
+  </footer>
 </body>
 </html>
