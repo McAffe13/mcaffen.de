@@ -3,1086 +3,121 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MK_Darmstadt · Dein Partner fuer Innovation</title>
-    <meta name="description" content="MK_Darmstadt: Innovation, Service, Feedback, Community, FAQ, Chatbot und mehr. Entdecke die Experience!" />
-    <link rel="icon" href="Logo.png" type="image/png">
-    <!-- Google Fonts for modern look -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
-    <style>
-        :root {
-            --main-bg: linear-gradient(135deg, #eaf3fa 0%, #f9f9f9 100%);
-            --main-fg: #222;
-            --accent: #1976d2;
-            --primary: #00b8ff;
-            --card-bg: rgba(255,255,255,0.87);
-            --card-shadow: 0 4px 32px rgba(44, 62, 80, 0.13), 0 8px 24px rgba(0,184,255,0.07);
-            --icon-bg: #eaf3fa;
-            --modal-bg: rgba(44, 62, 80, 0.20);
-            --highlight: #00d084;
-            --star: #ffd700;
-            --stat-up: #00c06a;
-            --glass: rgba(255,255,255,0.55);
-        }
-        html[data-theme='dark'] {
-            --main-bg: linear-gradient(135deg, #20242b 0%, #181c21 100%);
-            --main-fg: #f3f3f3;
-            --accent: #41e6ff;
-            --primary: #10a6e0;
-            --card-bg: rgba(32,36,43,0.93);
-            --icon-bg: #233348;
-            --modal-bg: rgba(20,30,40,0.84);
-            --highlight: #14f1c9;
-            --glass: rgba(32,36,43,0.67);
-        }
-        body {
-            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-            max-width: 1180px;
-            margin: 32px auto 0 auto;
-            padding: 0 18px 70px 18px;
-            background: var(--main-bg);
-            color: var(--main-fg);
-            transition: background 0.4s, color 0.3s;
-            position: relative;
-            overflow-x: hidden;
-        }
-        .toggle-btn {
-            position: fixed;
-            right: 24px; top: 18px;
-            z-index: 100;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            padding: 11px 22px;
-            font-size: 1.08rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 2px 14px rgba(44,62,80,0.13);
-            transition: background 0.2s, transform 0.18s;
-            outline: none;
-        }
-        .toggle-btn:hover {
-            background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
-            transform: scale(1.09) rotate(-2deg);
-        }
-        header {
-            text-align: center;
-            margin-bottom: 28px;
-            position: relative;
-        }
-        .particle-bg {
-            position: absolute; left:0; top:0; width:100%; height:100%; z-index:-1; pointer-events:none;
-        }
-        .typing-hi {
-            display: inline-block;
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin: 18px 0 8px 0;
-            min-height: 48px;
-            background: linear-gradient(90deg, var(--accent) 60%, var(--primary) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            -webkit-text-fill-color: transparent;
-            animation: bounce 1.2s infinite alternate;
-            filter: drop-shadow(0 2px 5px #fff8) drop-shadow(0 8px 16px var(--card-shadow));
-        }
-        @keyframes bounce {
-            0%   { transform: translateY(0); }
-            100% { transform: translateY(-14px);}
-        }
-        .logo {
-            max-width: 116px;
-            height: auto;
-            margin: 14px auto 8px auto;
-            border-radius: 18px;
-            box-shadow: 0 6px 24px rgba(44,62,80,0.16), 0 1px 2px #9ef4;
-            display: block;
-            border: 2.5px solid var(--primary);
-            background: var(--glass);
-            backdrop-filter: blur(4.5px);
-            transition: box-shadow 0.3s, border 0.3s;
-        }
-        .logo:hover {
-            box-shadow: 0 12px 28px 0 var(--primary), 0 8px 32px rgba(44, 62, 80, 0.17);
-            border: 3px solid var(--highlight);
-        }
-        h1 {
-            color: var(--accent);
-            font-size: 2.38rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 16px var(--primary), 0 1px 2px #fff8;
-        }
-        .intro {
-            font-size: 1.22rem;
-            margin-bottom: 24px;
-            color: #555;
-            background: var(--glass);
-            border-radius: 8px;
-            display: inline-block;
-            padding: 6px 18px;
-        }
-        .stat-bar {
-            display: flex;
-            justify-content: center;
-            gap: 42px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-            filter: drop-shadow(0 2px 8px var(--primary));
-        }
-        .stat {
-            background: linear-gradient(120deg, var(--icon-bg) 70%, #fff1 100%);
-            color: var(--accent);
-            border-radius: 12px;
-            padding: 22px 29px;
-            min-width: 120px;
-            text-align: center;
-            font-size: 1.55rem;
-            font-weight: 700;
-            box-shadow: 0 2px 16px var(--card-shadow), 0 1px 2px #eaf3fa;
-            margin-bottom: 6px;
-            position: relative;
-            transition: background 0.22s, transform 0.18s;
-        }
-        .stat:hover {
-            background: linear-gradient(120deg, var(--primary) 50%, var(--icon-bg) 100%);
-            color: #fff;
-            transform: scale(1.07) rotate(-1deg);
-        }
-        .stat-label {
-            display: block;
-            color: #444;
-            font-size: 1.07rem;
-            margin-top: 3px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-        }
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 52px;
-            margin-bottom: 48px;
-            margin-top: 10px;
-        }
-        @media (max-width: 990px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .card {
-            background: var(--card-bg);
-            box-shadow: var(--card-shadow);
-            border-radius: 16px;
-            padding: 35px 24px 26px 24px;
-            margin-bottom: 34px;
-            text-align: center;
-            transition: transform 0.23s, box-shadow 0.23s, background 0.2s;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            border: 2px solid transparent;
-            backdrop-filter: blur(2.5px);
-        }
-        .card:active, .card:focus {
-            background: #f0f6fb;
-        }
-        .card:hover {
-            transform: translateY(-14px) scale(1.045) rotate(-2deg);
-            box-shadow: 0 16px 48px 0 var(--primary), 0 8px 32px var(--card-shadow);
-            border: 2.5px solid var(--highlight);
-            background: linear-gradient(115deg, var(--card-bg) 80%, #f0f6fb 100%);
-        }
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 22px;
-            margin: 14px 0 0 0;
-        }
-        .service {
-            background: linear-gradient(108deg, var(--glass) 70%, #fff4 100%);
-            border-radius: 14px;
-            padding: 16px 20px;
-            width: 180px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 12px var(--card-shadow);
-            margin-bottom: 8px;
-            transition: background 0.2s, transform 0.17s;
-            border: 2px solid #eaf3fa;
-            cursor: pointer;
-        }
-        .service:hover {
-            background: linear-gradient(108deg, var(--highlight) 40%, var(--glass) 100%);
-            transform: scale(1.13) rotate(4deg);
-            color: #fff;
-            border: 2px solid var(--primary);
-        }
-        .service-icon {
-            font-size: 2.35rem;
-            margin-bottom: 7px;
-            text-shadow: 0 1px 8px var(--primary);
-            animation: pulse 2.8s infinite;
-        }
-        @keyframes pulse {
-            0% { filter: brightness(1);}
-            40% { filter: brightness(1.3);}
-            100% { filter: brightness(1);}
-        }
-        .service-title {
-            font-weight: 600;
-            margin-bottom: 3px;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-        }
-        .service-desc {
-            font-size: 1.03rem;
-        }
-        .team-list {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            flex-wrap: wrap;
-            margin-top: 13px;
-        }
-        .team-member {
-            width: 132px;
-            text-align: center;
-            padding: 14px 4px;
-            transition: transform 0.17s, box-shadow 0.2s;
-            border-radius: 14px;
-            background: var(--glass);
-            box-shadow: 0 2px 12px #bbe0f433;
-        }
-        .team-member:hover {
-            transform: scale(1.11) rotate(-2deg);
-            box-shadow: 0 8px 38px 0 var(--primary), 0 2px 8px #bbe0f4aa;
-        }
-        .team-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 7px;
-            box-shadow: 0 2px 12px var(--primary);
-            border: 3px solid #eaf3fa;
-        }
-        .team-name {
-            font-weight: 700;
-            margin-bottom: 1px;
-        }
-        .team-role {
-            font-size: 1.01rem;
-            color: #666;
-        }
-        .testimonials {
-            display: flex;
-            gap: 22px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-        .testimonial {
-            background: linear-gradient(110deg, #f6fafc 80%, #eaf3fa 100%);
-            border-radius: 19px;
-            padding: 18px 22px 14px 20px;
-            max-width: 270px;
-            min-width: 160px;
-            font-size: 1.02rem;
-            box-shadow: 0 2px 12px var(--primary), 0 1px 4px #eaf3faa0;
-            border-left: 4px solid var(--primary);
-            transition: transform 0.22s, background 0.18s, border-left 0.18s;
-            position: relative;
-        }
-        .testimonial:hover {
-            transform: scale(1.13) rotate(1.6deg);
-            border-left-color: var(--highlight);
-            background: linear-gradient(110deg, var(--highlight) 25%, #eaf3fa 100%);
-            color: #fff;
-        }
-        .testimonial-author {
-            margin-top: 8px;
-            font-size: 1.01rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        .feedback-btn {
-            background: linear-gradient(90deg, var(--highlight) 60%, var(--primary) 100%);
-            color: #fff;
-            border: none;
-            border-radius: 9px;
-            font-size: 1.08rem;
-            padding: 12px 32px;
-            margin: 18px 0 0 0;
-            cursor: pointer;
-            box-shadow: 0 2px 10px var(--highlight);
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: background 0.16s, transform 0.15s;
-        }
-        .feedback-btn:hover {
-            background: var(--accent);
-            transform: scale(1.09) rotate(-2deg);
-        }
-        .btn, .chatbot-btn {
-            display: inline-block;
-            padding: 15px 34px;
-            background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
-            color: #fff;
-            border: none;
-            border-radius: 9px;
-            font-size: 1.09rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-top: 18px;
-            cursor: pointer;
-            transition: background 0.22s, transform 0.2s;
-            text-decoration: none;
-            box-shadow: 0 2px 10px var(--primary);
-            animation: btn-bounce 1.6s infinite;
-        }
-        .btn:hover, .btn:focus, .chatbot-btn:hover, .chatbot-btn:focus {
-            background: linear-gradient(90deg, var(--accent) 60%, var(--primary) 100%);
-            transform: scale(1.08);
-        }
-        .chatbot-btn {
-            background: #222;
-            color: #fff;
-            animation: none;
-            margin-top: 9px;
-            margin-bottom: 7px;
-            font-size: 1.01rem;
-            padding: 10px 24px;
-            border: 2px solid var(--primary);
-        }
-        @keyframes btn-bounce {
-            0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(-7px);}
-        }
-        .faq-section {
-            margin: 52px 0 32px 0;
-            background: linear-gradient(90deg, var(--icon-bg) 40%, #fff4 100%);
-            border-radius: 16px;
-            padding: 36px 24px;
-            box-shadow: 0 2px 12px var(--card-shadow);
-        }
-        .faq-title {
-            font-size: 1.45rem;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-        }
-        .faq-item {
-            background: var(--card-bg);
-            border-radius: 10px;
-            margin-bottom: 11px;
-            box-shadow: 0 2px 12px var(--card-shadow);
-        }
-        .faq-q {
-            padding: 16px 15px;
-            font-weight: 700;
-            cursor: pointer;
-            color: var(--primary);
-            border-bottom: 1px solid var(--icon-bg);
-            user-select: none;
-            transition: background 0.2s;
-            font-size: 1.09rem;
-        }
-        .faq-q.open {
-            background: #eaf3fa;
-        }
-        .faq-a {
-            padding: 13px 15px 16px 15px;
-            display: none;
-            font-size: 1.09em;
-            color: var(--main-fg);
-        }
-        .faq-a.open {
-            display: block;
-            animation: fadein 0.35s;
-        }
-        @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
-        .timeline-section {
-            margin: 48px 0 36px 0;
-        }
-        .timeline-title {
-            font-size: 1.33rem;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 22px;
-            letter-spacing: 1px;
-        }
-        .timeline {
-            border-left: 4px solid var(--primary);
-            padding-left: 27px;
-            margin-left: 15px;
-        }
-        .timeline-event {
-            margin-bottom: 32px;
-            position: relative;
-        }
-        .timeline-event::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 8px;
-            width: 16px;
-            height: 16px;
-            background: var(--highlight);
-            border: 2.5px solid #fff;
-            border-radius: 50%;
-            z-index: 3;
-            box-shadow: 0 2px 8px var(--primary);
-            animation: glow 3s infinite;
-        }
-        @keyframes glow {
-            0%,100% { box-shadow: 0 2px 8px var(--primary);}
-            50% { box-shadow: 0 0 26px var(--highlight);}
-        }
-        .timeline-year {
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-size: 1.07rem;
-        }
-        .timeline-desc {
-            font-size: 1.07em;
-        }
-        .social-footer {
-            margin-top: 38px;
-            text-align: center;
-            font-size: 1.13em;
-            color: #999;
-        }
-        .social-footer a {
-            color: var(--primary);
-            margin: 0 7px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.32em;
-            transition: color 0.15s, transform 0.15s;
-        }
-        .social-footer a:hover { color: var(--highlight); transform: scale(1.22) rotate(-7deg);}
-        @media (max-width: 700px) {
-            .stat-bar { gap: 12px;}
-            .main-grid { grid-template-columns: 1fr; }
-            .services { gap: 8px;}
-        }
-        @media (max-width: 480px) {
-            .typing-hi { font-size: 1.21rem; min-height: 26px;}
-            h1 { font-size: 1.09rem;}
-            .modal { padding: 12px 2px 9px 2px;}
-        }
-        /* Modal und Chatbot Styles wie gehabt... (kannst du nach Wunsch weiter stylen) */
-        /* Add cool animated background particles */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.07;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .particle.p1 { width:220px;height:220px; background:var(--primary); top:16%; left:3%; animation: float1 16s infinite;}
-        .particle.p2 { width:110px;height:110px; background:var(--highlight); top:68%; left:12%; animation: float2 18s infinite;}
-        .particle.p3 { width:170px;height:170px; background:var(--accent); top:51%; right:7%; animation: float3 21s infinite;}
-        .particle.p4 { width:80px;height:80px; background:var(--primary); top:7%; right:14%; animation: float4 23s infinite;}
-        @keyframes float1 { 0% {transform:translateY(0);} 50% {transform:translateY(30px);} 100% {transform:translateY(0);} }
-        @keyframes float2 { 0% {transform:translateY(0);} 50% {transform:translateY(-25px);} 100% {transform:translateY(0);} }
-        @keyframes float3 { 0% {transform:translateY(0);} 50% {transform:translateY(40px);} 100% {transform:translateY(0);} }
-        @keyframes float4 { 0% {transform:translateY(0);} 50% {transform:translateY(-22px);} 100% {transform:translateY(0);} }
-    </style>
+    <title>McAffen.de – Dein Minecraft Server</title>
+    <meta name="description" content="McAffen.de – Der verrückteste Minecraft-Server mit aktiver Community. Werde jetzt ein Affe!">
+    <link rel="icon" href="Minecraft-Affen.png" type="image/png">
+    <!-- Google Fonts Minecraft-Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="particle-bg">
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
-        <div class="particle p4"></div>
-    </div>
-    <button class="toggle-btn" id="toggleMode" onclick="toggleTheme()">?? Dark Mode</button>
-    <header>
-        <span class="typing-hi" id="typingHi"></span>
-        <img src="Logo.png" alt="Logo von MK_Darmstadt" class="logo" />
-        <h1>Willkommen bei MK_Darmstadt!</h1>
-        <p class="intro" id="greetingTime">Dein Partner fuer Innovation, Technik, Service und Community in Darmstadt und Umgebung.</p>
+    <button class="toggle-btn" id="toggleMode" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <nav>
+        <div class="logo-nav">
+            <img src="Minecraft-Affen.png" alt="McAffen Logo" class="logo" />
+            <span class="nav-title">McAffen.de</span>
+        </div>
+        <ul class="navbar">
+            <li><a href="#home" class="nav-btn">Home</a></li>
+            <li><a href="#regelwerk" class="nav-btn">Regelwerk</a></li>
+            <li><a href="#team" class="nav-btn">Team</a></li>
+            <li><a href="#kontakt" class="nav-btn">Kontakt</a></li>
+            <li><a href="#discord" class="nav-btn discord">Discord</a></li>
+        </ul>
+    </nav>
+    <header id="home">
+        <img src="Minecraft-Affen.png" alt="McAffen Affen Logo" class="hero-logo" />
+        <h1>Willkommen bei <span class="highlight">McAffen.de</span></h1>
+        <p class="subtitle">Der wildeste Minecraft Server für Bananen-Fans und Block-Buddies 🍌</p>
+        <div class="server-ip-block">
+            <span class="ip-label">Server-IP:</span>
+            <input type="text" id="serverIp" value="play.McAffen.de" readonly>
+            <button class="fancy-btn" onclick="copyIP(this)">Kopieren</button>
+        </div>
+        <a href="minecraft://?addExternalServer=McAffen.de|play.McAffen.de" class="fancy-btn join-btn">Minecraft öffnen & beitreten!</a>
     </header>
-    <div class="stat-bar">
-        <div class="stat"><span id="statKunden">0</span><span class="stat-label">Kunden</span></div>
-        <div class="stat"><span id="statProjekte">0</span><span class="stat-label">Projekte</span></div>
-        <div class="stat"><span id="statFeedback">0</span><span class="stat-label">Feedbacks</span></div>
-    </div>
-    <div class="main-grid">
-        <section class="card" tabindex="0" onclick="openModal('leistungen')" aria-label="Leistungen anzeigen">
-            <h2>Unsere Leistungen</h2>
-            <div class="services">
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">emoji_objects</span>
-                    <div class="service-title">Innovationsberatung</div>
-                    <div class="service-desc">Wir bringen frische Ideen und smarte Loesungen in Ihr Unternehmen.</div>
-                </div>
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">build</span>
-                    <div class="service-title">Technischer Service</div>
-                    <div class="service-desc">Schnell, zuverlaessig und kompetent – fuer Ihre Technik immer da.</div>
-                </div>
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">public</span>
-                    <div class="service-title">Digitale Loesungen</div>
-                    <div class="service-desc">Von Webseiten bis Cloud – wir machen Sie fit fuer die Zukunft.</div>
-                </div>
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">diversity_3</span>
-                    <div class="service-title">Kundenbetreuung</div>
-                    <div class="service-desc">Persoenlich, erreichbar und engagiert – auf uns ist Verlass.</div>
-                </div>
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">security</span>
-                    <div class="service-title">IT-Sicherheit</div>
-                    <div class="service-desc">Sicherheit fuer Daten und Systeme, Beratung zu Cyber-Security.</div>
-                </div>
-                <div class="service">
-                    <span class="material-icons-outlined service-icon">smartphone</span>
-                    <div class="service-title">App-Entwicklung</div>
-                    <div class="service-desc">Mobile Apps und Webapps, individuell und modern.</div>
-                </div>
-            </div>
+    <main>
+        <section class="colorblock rules" id="regelwerk">
+            <h2>Regelwerk 📜</h2>
+            <ul>
+                <li>Kein Griefing, kein Hacking, bleib ein feiner Affe!</li>
+                <li>Sei nett zu anderen Spielern 🍌</li>
+                <li>Folge den Anweisungen des Teams</li>
+                <li>Mehr Details findest du <a href="#">hier</a></li>
+            </ul>
         </section>
-        <section class="card" tabindex="0" onclick="openModal('team')" aria-label="Team anzeigen">
-            <h2>Unser Team</h2>
-            <div class="team-list">
-                <div class="team-member">
-                    <img src="Moritz.jpg" alt="Moritz" class="team-avatar" onerror="this.src='https://api.dicebear.com/7.x/adventurer/svg?seed=Moritz';">
-                    <div class="team-name">Moritz</div>
-                    <div class="team-role">Inhaber & Innovation</div>
-                </div>
-                <div class="team-member">
-                    <img src="Julian.jpg" alt="Julian" class="team-avatar" onerror="this.src='https://api.dicebear.com/7.x/adventurer/svg?seed=Julian';">
-                    <div class="team-name">Julian</div>
-                    <div class="team-role">Technik & Support</div>
-                </div>
-            </div>
-            <div style="margin-top:16px;font-size:1.09em;color:#666;">Wir wachsen stetig – neue Talente willkommen!</div>
+        <section class="colorblock team" id="team">
+            <h2>Unser Team 👥</h2>
+            <ul class="team-list">
+                <li><b>McAffe13</b> – Owner & Banankönig</li>
+                <li><b>Foox</b> – Admin</li>
+                <li><b>Quenten</b> – Support</li>
+                <li><b>Phoenix</b> – Moderation</li>
+                <li><b>SniperJohnny_yt</b> – Helfer</li>
+            </ul>
         </section>
-        <section class="card" tabindex="0" onclick="openModal('kunden')" aria-label="Kundenstimmen anzeigen">
-            <h2>Was unsere Kunden sagen</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    "MK_Darmstadt hat unser Unternehmen auf ein neues Level gehoben. Top Service!"
-                    <div class="testimonial-author">– Jana K.</div>
-                </div>
-                <div class="testimonial">
-                    "Schnell, freundlich und immer eine Loesung parat. Vielen Dank!"
-                    <div class="testimonial-author">– Tobias M.</div>
-                </div>
-                <div class="testimonial">
-                    "Unsere Wunsch-Website war schneller online als gedacht. Klare Empfehlung."
-                    <div class="testimonial-author">– Familie Weber</div>
-                </div>
-            </div>
-        </section>
-        <section class="card" tabindex="0" onclick="openModal('kontakt')" aria-label="Kontakt anzeigen">
-            <h2>Kontakt & Newsletter</h2>
+        <section class="colorblock kontakt" id="kontakt">
+            <h2>Kontakt 📧</h2>
             <p>
-                Haben Sie Fragen oder moechten Sie mehr erfahren?<br>
-                Schreiben Sie uns direkt oder abonnieren Sie unseren Newsletter!
+                Fragen, Bugs oder Vorschläge?<br>
+                Schreib uns an <a href="mailto:support@mcaffen.de">support@mcaffen.de</a> <br>
+                <span style="color:#16aaff">Oder Ingame: /contact</span>
             </p>
-            <a href="mailto:koch.moritz13@gmx.de" class="btn">Jetzt Kontakt aufnehmen</a>
-            <form style="margin-top:14px;" onsubmit="newsletterThanks(event)">
-                <input type="email" id="newsletterMail" required placeholder="Ihre E-Mail" style="padding:9px 12px; border-radius:5px; border:1px solid #c8d6e5; font-size:1rem; width: 190px; margin-right:8px;">
-                <button type="submit" class="btn" style="padding:9px 18px; font-size:0.98rem; animation:none;">Newsletter</button>
-            </form>
-            <button class="feedback-btn" onclick="event.stopPropagation();openModal('feedback')">Feedback geben</button>
-            <button class="chatbot-btn" onclick="event.stopPropagation();openChatbot()">Frage an Chatbot</button>
         </section>
-    </div>
-
-    <!-- FAQ -->
-    <section class="faq-section">
-        <div class="faq-title">Häufige Fragen (FAQ)</div>
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">Was kostet eine Erstberatung?</div>
-            <div class="faq-a">Die Erstberatung ist für Sie unverbindlich & kostenlos – schreiben Sie uns einfach an!</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">Wie schnell bekomme ich eine Antwort?</div>
-            <div class="faq-a">In der Regel antworten wir werktags innerhalb von 24 Stunden, meist schneller.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">Kann ich bei Ihnen ein Praktikum machen?</div>
-            <div class="faq-a">Wir sind offen für Praktika und studentische Projekte. Bewerben Sie sich gerne per Mail!</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">Ist ein Vor-Ort-Termin möglich?</div>
-            <div class="faq-a">Ja, wir kommen gerne zu Ihnen oder beraten digital – ganz wie Sie möchten.</div>
-        </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="timeline-section">
-        <div class="timeline-title">Unsere Geschichte</div>
-        <div class="timeline">
-            <div class="timeline-event">
-                <div class="timeline-year">2019</div>
-                <div class="timeline-desc">Gründung von MK_Darmstadt durch Moritz, Start mit ersten lokalen Kunden.</div>
-            </div>
-            <div class="timeline-event">
-                <div class="timeline-year">2021</div>
-                <div class="timeline-desc">Julian kommt als Technik-Experte dazu, neue digitale Services entstehen.</div>
-            </div>
-            <div class="timeline-event">
-                <div class="timeline-year">2023</div>
-                <div class="timeline-desc">Mehr als 60 Projekte abgeschlossen, Ausbau Cloud- und App-Entwicklung.</div>
-            </div>
-            <div class="timeline-event">
-                <div class="timeline-year">2025</div>
-                <div class="timeline-desc">Community, Chatbot, neue Services – MK_Darmstadt bleibt am Puls der Zeit!</div>
-            </div>
-        </div>
-    </section>
-
+        <section class="colorblock discord" id="discord">
+            <h2>Discord 💬</h2>
+            <p>Tritt unserer Community bei und werde ein echter Minecraft-Affe!</p>
+            <a href="https://discord.gg/DEININVITELINK" class="fancy-btn discord-btn" target="_blank">
+                Zum Discord
+            </a>
+        </section>
+    </main>
     <footer>
-        <div class="social-footer">
-            Folge uns:
-            <a href="mailto:koch.moritz13@gmx.de" title="E-Mail"><span class="material-icons-outlined">email</span></a>
-            <a href="https://www.instagram.com/" target="_blank" title="Instagram"><span class="material-icons-outlined">photo_camera</span></a>
-            <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><span class="material-icons-outlined">link</span></a>
-            <a href="https://www.twitter.com/" target="_blank" title="Twitter"><span class="material-icons-outlined">twitter</span></a>
-        </div>
-        <div style="margin-top:13px;">
-            &copy; 2025 MK_Darmstadt · Moritz | <a href="mailto:koch.moritz13@gmx.de">koch.moritz13@gmx.de</a>
-        </div>
+        <small>© 2025 McAffen.de | <a href="#regelwerk">Regelwerk</a> | <a href="#team">Team</a> | <a href="#kontakt">Kontakt</a> | <a href="#discord">Discord</a></small>
     </footer>
-    <!-- Modal und Chatbot wie gehabt ... -->
-    <div class="modal-bg" id="modalBg" tabindex="-1" onclick="closeModalByBg(event)">
-      <div class="modal" id="modalContent" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <button class="modal-close" onclick="closeModal()" aria-label="Fenster schliessen">&times;</button>
-        <div id="modalInner"></div>
-      </div>
-    </div>
-    <div class="chatbot-pop" id="chatbotPop" style="box-shadow:0 8px 44px var(--primary);border-radius:18px;backdrop-filter:blur(3px);">
-        <div class="chatbot-header" style="background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;border-radius:18px 18px 0 0;">
-            <span class="material-icons-outlined" style="vertical-align:middle;margin-right:8px;">smart_toy</span>
-            MK_Darmstadt Chatbot
-            <button class="chatbot-close" onclick="closeChatbot()" aria-label="Chatbot schliessen" style="float:right;background:none;border:none;color:#fff;font-size:1.5em;">&times;</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody"></div>
-        <form class="chatbot-input-bar" onsubmit="sendChatbot(event)" style="display:flex;gap:6px;background:var(--icon-bg);border-radius:0 0 14px 14px;padding:10px;">
-            <input class="chatbot-input" id="chatbotInput" autocomplete="off" placeholder="Deine Frage..." style="flex:1;padding:10px 12px;border-radius:8px;border:1.5px solid var(--primary);font-size:1.09rem;">
-            <button class="chatbot-send" type="submit" style="background:var(--primary);color:#fff;border:none;font-size:1.25em;border-radius:7px;padding:0 18px;transition:background 0.18s;"><span class="material-icons-outlined">send</span></button>
-        </form>
-    </div>
     <script>
-    // Typing Animation
-    const halloPhrases = [
-        "Hallo!",
-        "Hallo und willkommen!",
-        "MK_Darmstadt sagt Hallo!",
-        "Schoen, dass Sie da sind!",
-        "Gemeinsam Zukunft gestalten!",
-        "Community, Feedback, Innovation!"
-    ];
-    let idx = 0, charIdx = 0, typing = true;
-    const typingHi = document.getElementById('typingHi');
-    function typeHallo() {
-        if (typing) {
-            if (charIdx < halloPhrases[idx].length) {
-                typingHi.textContent += halloPhrases[idx][charIdx++];
-                setTimeout(typeHallo, 70);
+        // DARK/LIGHT MODE
+        function toggleTheme(){
+            var html = document.documentElement;
+            var btn = document.getElementById('toggleMode');
+            if(html.getAttribute('data-theme')==='dark'){
+                html.setAttribute('data-theme','light');
+                btn.innerHTML="🌙 Dark Mode";
+                localStorage.setItem('mcaffen_theme','light');
             } else {
-                typing = false;
-                setTimeout(eraseHallo, 1100);
+                html.setAttribute('data-theme','dark');
+                btn.innerHTML="☀️ Light Mode";
+                localStorage.setItem('mcaffen_theme','dark');
             }
         }
-    }
-    function eraseHallo() {
-        if (!typing) {
-            if (charIdx > 0) {
-                typingHi.textContent = halloPhrases[idx].substring(0, --charIdx);
-                setTimeout(eraseHallo, 30);
-            } else {
-                typing = true;
-                idx = (idx + 1) % halloPhrases.length;
-                setTimeout(typeHallo, 420);
+        (function(){
+            var stored = localStorage.getItem('mcaffen_theme');
+            if(stored==='dark'){
+                document.documentElement.setAttribute('data-theme','dark');
+                document.getElementById('toggleMode').innerHTML="☀️ Light Mode";
             }
-        }
-    }
-    typeHallo();
+        })();
 
-    // Stat Animation
-    function animateStat(id, to, duration=1000) {
-        let el = document.getElementById(id);
-        if(!el) return;
-        let start = 0;
-        let step = Math.ceil(to / (duration/24));
-        let interval = setInterval(()=>{
-            start += step;
-            if(start >= to) {
-                el.textContent = to;
-                clearInterval(interval);
-            } else {
-                el.textContent = start;
-            }
-        }, 24);
-    }
-    let stats = { statKunden: 248, statProjekte: 68, statFeedback: 0 };
-    function setStats() {
-        animateStat("statKunden", stats.statKunden);
-        animateStat("statProjekte", stats.statProjekte);
-        animateStat("statFeedback", getFeedbackCount());
-    }
-    setTimeout(setStats, 600);
-
-    function newsletterThanks(e) {
-        e.preventDefault();
-        const mail = document.getElementById('newsletterMail');
-        if(mail.value) {
-            mail.value = '';
-            mail.placeholder = "Danke fuer Ihr Interesse!";
+        // IP kopieren
+        function copyIP(btn) {
+            const ipField = document.getElementById('serverIp');
+            ipField.select();
+            ipField.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            btn.innerText = "Kopiert!";
+            setTimeout(() => btn.innerText = "Kopieren", 1200);
         }
-    }
-
-    // FAQ Toggle
-    function toggleFaq(el) {
-        var open = el.classList.contains("open");
-        document.querySelectorAll('.faq-q').forEach(q=>q.classList.remove('open'));
-        document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
-        if(!open) {
-            el.classList.add('open');
-            el.nextElementSibling.classList.add('open');
-        }
-    }
-
-    // Modal Logic
-    function openModal(segment) {
-        var modalBg = document.getElementById('modalBg');
-        var modalInner = document.getElementById('modalInner');
-        var content = '';
-        if(segment === 'leistungen') {
-            content = `
-                <h2 id="modalTitle">Mehr zu unseren Leistungen</h2>
-                <ul style="text-align:left;max-width:340px;margin:16px auto 0 auto;font-size:1.08rem;line-height:1.7;">
-                  <li><b>Innovationsberatung:</b> Individuelle Beratung fuer neue Geschaeftsideen und Optimierung Ihrer Prozesse.</li>
-                  <li><b>Technischer Service:</b> Wartung, Support und Reparatur – immer zuverlaessig und schnell vor Ort.</li>
-                  <li><b>Digitale Loesungen:</b> Webseiten, Cloud-Anbindung, Automatisierung und IT-Sicherheit aus einer Hand.</li>
-                  <li><b>Kundenbetreuung:</b> Wir begleiten Sie persoenlich vom ersten Kontakt bis zum Ziel und darueber hinaus.</li>
-                  <li><b>App-Entwicklung:</b> Mobile und Webapps für Ihr Business oder Ihre Idee.</li>
-                  <li><b>IT-Sicherheit:</b> Beratung und Umsetzung für maximale Sicherheit.</li>
-                </ul>
-            `;
-        } else if(segment === 'team') {
-            content = `
-                <h2 id="modalTitle">Das Team von MK_Darmstadt</h2>
-                <div style="display:flex;justify-content:center;gap:36px;flex-wrap:wrap;margin:18px 0;">
-                  <div>
-                    <img src="Moritz.jpg" alt="Moritz" style="width:68px;height:68px;border-radius:50%;border:2px solid #eaf3fa;object-fit:cover;box-shadow:0 2px 8px #bbc;">
-                    <div style="font-weight:700;margin-top:7px;">Moritz</div>
-                    <div style="font-size:1.01rem;color:#555;">Inhaber & Innovation</div>
-                  </div>
-                  <div>
-                    <img src="Julian.jpg" alt="Julian" style="width:68px;height:68px;border-radius:50%;border:2px solid #eaf3fa;object-fit:cover;box-shadow:0 2px 8px #bbc;">
-                    <div style="font-weight:700;margin-top:7px;">Julian</div>
-                    <div style="font-size:1.01rem;color:#555;">Technik & Support</div>
-                  </div>
-                </div>
-                <div style="font-size:1.09rem;">Wir stehen fuer Innovation, Verlaesslichkeit und persoenlichen Service!</div>
-            `;
-        } else if(segment === 'kunden') {
-            content = `
-                <h2 id="modalTitle">Kundenstimmen</h2>
-                <div style="margin:20px 0 5px 0;">
-                  <div style="background:#f6fafc;border-radius:13px;padding:12px 16px 10px 16px;box-shadow:0 2px 6px #d9e7f3;border-left:4px solid #2980b9;margin-bottom:15px;">
-                    "MK_Darmstadt hat unser Unternehmen auf ein neues Level gehoben. Top Service!"
-                    <div style="color:#2980b9;font-weight:600;margin-top:4px;font-size:1.01rem;">– Jana K.</div>
-                  </div>
-                  <div style="background:#f6fafc;border-radius:13px;padding:12px 16px 10px 16px;box-shadow:0 2px 6px #d9e7f3;border-left:4px solid #2980b9;margin-bottom:15px;">
-                    "Schnell, freundlich und immer eine Loesung parat. Vielen Dank!"
-                    <div style="color:#2980b9;font-weight:600;margin-top:4px;font-size:1.01rem;">– Tobias M.</div>
-                  </div>
-                  <div style="background:#f6fafc;border-radius:13px;padding:12px 16px 10px 16px;box-shadow:0 2px 6px #d9e7f3;border-left:4px solid #2980b9;">
-                    "Unsere Wunsch-Website war schneller online als gedacht. Klare Empfehlung."
-                    <div style="color:#2980b9;font-weight:600;margin-top:4px;font-size:1.01rem;">– Familie Weber</div>
-                  </div>
-                </div>
-            `;
-        } else if(segment === 'kontakt') {
-            content = `
-                <h2 id="modalTitle">Kontakt & Newsletter</h2>
-                <form onsubmit="kontaktForm(event)" style="margin-bottom: 19px;">
-                    <input type="text" id="kontaktName" required placeholder="Ihr Name" style="margin-bottom:8px;width:90%;padding:10px;border-radius:7px;border:1.5px solid #c8d6e5;"><br>
-                    <input type="email" id="kontaktEmail" required placeholder="Ihre E-Mail" style="margin-bottom:8px;width:90%;padding:10px;border-radius:7px;border:1.5px solid #c8d6e5;"><br>
-                    <textarea id="kontaktNachricht" required placeholder="Ihre Nachricht" style="width:90%;min-height:54px;max-width:99%;font-size:1.11rem;padding:11px 7px;resize:vertical;border-radius:8px;border:1.5px solid #c8d6e5;"></textarea><br>
-                    <button type="submit" class="btn" style="margin-top:7px;">Abschicken</button>
-                </form>
-                <div id="kontaktSuccess" class="feedback-success" style="display:none;">Danke für Ihre Nachricht! Wir melden uns so schnell wie möglich.</div>
-                <p style="margin-top:15px;">Oder direkt eine Mail an <a href="mailto:koch.moritz13@gmx.de">koch.moritz13@gmx.de</a></p>
-                <p>Oder abonnieren Sie den Newsletter:</p>
-                <form onsubmit="newsletterThanks(event)" style="margin-top:8px;">
-                    <input type="email" id="newsletterMailModal" required placeholder="Ihre E-Mail" style="padding:10px 12px; border-radius:7px; border:1.5px solid #c8d6e5; font-size:1.09rem; width: 190px; margin-right:8px;">
-                    <button type="submit" class="btn" style="padding:10px 18px; font-size:1.01rem; animation:none;">Newsletter</button>
-                </form>
-            `;
-        } else if(segment === 'feedback') {
-            content = `
-                <h2 id="modalTitle">Dein Feedback</h2>
-                <form id="feedbackForm" onsubmit="submitFeedback(event)" style="margin:18px 0 7px 0;">
-                    <div class="feedback-stars" id="feedbackStars" style="font-size:1.8em; margin-bottom:10px;">
-                        <span class="star" data-star="1">&#9733;</span>
-                        <span class="star" data-star="2">&#9733;</span>
-                        <span class="star" data-star="3">&#9733;</span>
-                        <span class="star" data-star="4">&#9733;</span>
-                        <span class="star" data-star="5">&#9733;</span>
-                    </div>
-                    <textarea id="feedbackInput" required maxlength="240" placeholder="Schreib uns dein Feedback..." style="width:98%;min-height:54px;max-width:99%;font-size:1.09rem;padding:11px 7px;resize:vertical;border-radius:8px;border:1.5px solid #c8d6e5;"></textarea>
-                    <br>
-                    <button type="submit" class="feedback-btn" style="margin-top:11px;">Absenden</button>
-                </form>
-                <div id="feedbackSuccess" class="feedback-success" style="display:none;"></div>
-                <h3 style="font-size:1.13rem;margin-top:18px;">Was andere sagen:</h3>
-                <ul class="feedback-list" id="feedbackList"></ul>
-            `;
-            setTimeout(loadFeedback, 200);
-            setTimeout(bindStarRating, 400);
-        } else {
-            content = "<h2>Fehler</h2><p>Segment nicht gefunden.</p>";
-        }
-        modalInner.innerHTML = content;
-        document.getElementById('modalBg').classList.add('active');
-        if(segment==='feedback') setTimeout(()=>{document.getElementById('feedbackInput').focus()},500);
-        if(segment==='kontakt') setTimeout(()=>{document.getElementById('kontaktName').focus()},500);
-        setTimeout(function(){
-            document.getElementById('modalContent').focus();
-        }, 150);
-    }
-    function closeModal() {
-      document.getElementById('modalBg').classList.remove('active');
-    }
-    function closeModalByBg(e) {
-      if(e.target === e.currentTarget) closeModal();
-    }
-    document.addEventListener('keydown', function(e){
-        if(e.key === "Escape") closeModal();
-    });
-
-    function kontaktForm(e) {
-        e.preventDefault();
-        document.getElementById('kontaktSuccess').style.display = '';
-        setTimeout(()=>{closeModal();},1800);
-    }
-
-    function submitFeedback(event) {
-        event.preventDefault();
-        var input = document.getElementById('feedbackInput');
-        var value = input.value.trim();
-        var stars = window.currentFeedbackStars || 0;
-        if(value.length > 0) {
-            var feedbacks = JSON.parse(localStorage.getItem('mkd_feedbacks') || "[]");
-            feedbacks.unshift({text:value,stars:stars});
-            localStorage.setItem('mkd_feedbacks', JSON.stringify(feedbacks.slice(0,15)));
-            input.value = '';
-            window.currentFeedbackStars = 0;
-            document.getElementById('feedbackSuccess').textContent = "Danke fuer dein Feedback!";
-            document.getElementById('feedbackSuccess').style.display = '';
-            loadFeedback();
-            setStats();
-            setTimeout(function(){
-                document.getElementById('feedbackSuccess').style.display = 'none';
-            }, 2050);
-            if(document.getElementById("feedbackStars")) {
-                Array.from(document.getElementById("feedbackStars").children).forEach(s=>s.classList.remove("selected"));
-            }
-        }
-    }
-    function loadFeedback() {
-        var feedbacks = JSON.parse(localStorage.getItem('mkd_feedbacks') || "[]");
-        var list = document.getElementById('feedbackList');
-        if(list) {
-            list.innerHTML = '';
-            if(feedbacks.length === 0) {
-                list.innerHTML = "<li>Sei der Erste und gib dein Feedback ab!</li>";
-            } else {
-                feedbacks.forEach(function(item,i){
-                    list.innerHTML += `<li>
-                        <span style="color:#ffd700">${"&#9733;".repeat(item.stars||0)}</span>
-                        ${item.text}
-                        <button class="delete-feedback" onclick="deleteFeedback(${i})" title="Feedback entfernen">&times;</button>
-                    </li>`;
-                });
-            }
-        }
-    }
-    function getFeedbackCount(){
-        var feedbacks = JSON.parse(localStorage.getItem('mkd_feedbacks') || "[]");
-        return feedbacks.length;
-    }
-    function deleteFeedback(idx){
-        var feedbacks = JSON.parse(localStorage.getItem('mkd_feedbacks') || "[]");
-        feedbacks.splice(idx,1);
-        localStorage.setItem('mkd_feedbacks', JSON.stringify(feedbacks.slice(0,15)));
-        loadFeedback();
-        setStats();
-    }
-    function bindStarRating() {
-        var stars = document.querySelectorAll('#feedbackStars .star');
-        stars.forEach(function(star, idx){
-            star.addEventListener('mouseenter', function() {
-                for(let i=0; i<=idx; ++i) stars[i].classList.add('active');
-            });
-            star.addEventListener('mouseleave', function() {
-                stars.forEach(s => s.classList.remove('active'));
-            });
-            star.addEventListener('click', function() {
-                window.currentFeedbackStars = idx+1;
-                stars.forEach(s => s.classList.remove('selected'));
-                for(let i=0; i<=idx; ++i) stars[i].classList.add('selected');
+        // Smooth scroll for anchor links (Navigation)
+        document.querySelectorAll('a.nav-btn').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href').substring(1);
+                const section = document.getElementById(targetId);
+                if(section){
+                  e.preventDefault();
+                  section.scrollIntoView({behavior: 'smooth'});
+                }
             });
         });
-    }
-
-    // Dark Mode
-    function toggleTheme(){
-        var html = document.documentElement;
-        if(html.getAttribute('data-theme')==='dark'){
-            html.setAttribute('data-theme','light');
-            document.getElementById('toggleMode').innerHTML="?? Dark Mode";
-            localStorage.setItem('mkd_theme','light');
-        } else {
-            html.setAttribute('data-theme','dark');
-            document.getElementById('toggleMode').innerHTML="?? Light Mode";
-            localStorage.setItem('mkd_theme','dark');
-        }
-    }
-    (function(){
-        var stored = localStorage.getItem('mkd_theme');
-        if(stored==='dark'){
-            document.documentElement.setAttribute('data-theme','dark');
-            document.getElementById('toggleMode').innerHTML="?? Light Mode";
-        }
-    })();
-
-    // Begruessung je nach Tageszeit
-    function greetingByTime() {
-        var h = new Date().getHours();
-        var t = "Dein Partner fuer Innovation, Technik, Service und Community in Darmstadt und Umgebung.";
-        if(h>=5 && h<11) t = "Guten Morgen! " + t;
-        else if(h>=11 && h<17) t = "Schoenen Tag! " + t;
-        else if(h>=17 && h<21) t = "Guten Abend! " + t;
-        else t = "Willkommen zur spaeten Stunde! " + t;
-        document.getElementById("greetingTime").innerHTML = t;
-    }
-    greetingByTime();
-
-    // Easter Egg: Konami-Code
-    var konami = [38,38,40,40,37,39,37,39,66,65], kidx=0;
-    document.addEventListener('keydown', function(e){
-        if(e.keyCode === konami[kidx]) kidx++;
-        else kidx=0;
-        if(kidx===10){
-            kidx=0;
-            alert("?? Easter Egg: Du hast den Konami-Code entdeckt!\nViel Spass bei MK_Darmstadt!");
-        }
-    });
-
-    // Chatbot (nur dieser Teil neu/besser)
-    function openChatbot(){
-        document.getElementById('chatbotPop').style.display='block';
-        document.getElementById('chatbotInput').focus();
-        setTimeout(()=>scrollChatbotBody(),100);
-        if(!window._mkdBotWelcomed) {
-            chatbotBotMsg("Hallo ??! Ich bin dein MK_Darmstadt Chatbot. Stelle mir Fragen zu Team, Leistungen, Kontakt, Preisen, Feedback, Witzen oder Funfacts!");
-            window._mkdBotWelcomed = true;
-        }
-    }
-    function closeChatbot(){
-        document.getElementById('chatbotPop').style.display='none';
-    }
-    function sendChatbot(e){
-        e.preventDefault();
-        var input = document.getElementById('chatbotInput');
-        var body = document.getElementById('chatbotBody');
-        var val = input.value.trim();
-        if(!val) return;
-        body.innerHTML += `<div class="chatbot-message chatbot-user"><b>Du:</b> ${escapeHTML(val)}</div>`;
-        input.value = '';
-        setTimeout(()=>chatbotAnswer(val),400);
-    }
-    function chatbotBotMsg(msg) {
-        var body = document.getElementById('chatbotBody');
-        body.innerHTML += `<div class="chatbot-message"><b>Bot:</b> ${msg}</div>`;
-        scrollChatbotBody();
-    }
-    function scrollChatbotBody(){
-        var b = document.getElementById('chatbotBody');
-        b.scrollTop = b.scrollHeight;
-    }
-    function escapeHTML(str) {
-        return str.replace(/[&<>"']/g, function(m) {
-            return ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;'
-            })[m];
-        });
-    }
-    function chatbotAnswer(q){
-        let answer = "Sorry, das weiss ich leider nicht. Frag Moritz oder Julian oder probier es noch mal anders!";
-        const funfacts = [
-            "Darmstadt war 1997 die erste deutsche Stadt mit einer Webseite für alle Bürger.",
-            "MK_Darmstadt liebt Innovationen! ??",
-            "Unser Team besteht aus echten Technikfans.",
-            "Wusstest du? Wir setzen viel auf Nachhaltigkeit.",
-            "MK_Darmstadt hat schon ueber 60 Projekte umgesetzt!",
-            "Mit dem Dark Mode bleibt dir die Sonne erspart. ??",
-            "Unser Team: Moritz und Julian – immer fuer dich da!"
-        ];
-        const jokes = [
-            "Warum koennen Geister so schlecht luegen? Weil man durch sie hindurchsieht! ??",
-            "Was macht ein Pirat am Computer? Er drueckt die Enter-Taste! ?????",
-            "Warum sind Computer so gut im Singen? Weil sie die richtigen Noten haben! ??",
-            "Warum koennen Roboter keine Geheimnisse behalten? Weil sie alles speichern! ??"
-            "Wie nennt man einen Käfer mit Fieber? - Ein Glühwürmchen.??"
-            "Was isst ein hungriger Maulwurf in einem Restaurant? - Ein 8-Gänge-Menü. ??"
-            "Was ist beige, sehr klebrig und wandert durch die Wüste? - Das Karamel, natürlich. ??"
-            "Die Zahl 8 und die Zahl 0 treffen sich. Da sagt die 0 zur 8: "Ohh, cooler Gürtel! ??"
-            "Wie kann man einen grünen Kaktus auch noch nennen? - Eine gut bewaffnete Gurke. ??"
-            
-        ];
-        q = q.toLowerCase();
-        if(q.match(/(kontakt|email|erreichen|anschreiben)/)) {
-            answer = "Du kannst uns jederzeit eine Mail schreiben: <a href='mailto:koch.moritz13@gmx.de'>koch.moritz13@gmx.de</a>";
-        } else if(q.match(/(oeffnungszeiten|wann|zeiten|uhrzeit|zeit)/)) {
-            answer = "Wir sind meist werktags von 9 bis 18 Uhr erreichbar!";
-        } else if(q.match(/(team|wer seid ihr|wer ist|mitarbeiter|besetzung)/)) {
-            answer = "Unser Team: Moritz (Inhaber & Innovation), Julian (Technik & Support)";
-        } else if(q.match(/(preise|kosten|angebot|preis)/)) {
-            answer = "Die Preise sind individuell. Schreib uns einfach – wir machen dir ein faires Angebot!";
-        } else if(q.match(/(hi|hallo|servus|guten tag|gruesse|grüße|moin|hey)/)) {
-            answer = "Hallo! Wie kann ich helfen? ??";
-        } else if(q.match(/(leistungen|service|angebot|was bietet ihr)/)) {
-            answer = "Wir bieten Innovationsberatung, Technik-Service, digitale Loesungen, App-Entwicklung, IT-Sicherheit und Kundenbetreuung.";
-        } else if(q.match(/(projekte|referenzen|beispiele|kunden)/)) {
-            answer = "Wir haben bereits ueber 60 Projekte erfolgreich umgesetzt!";
-        } else if(q.match(/(feedback|bewertung|meinung)/)) {
-            answer = "Dein Feedback kannst du direkt im Feedback-Fenster abgeben! ?";
-        } else if(q.match(/(danke|cool|top|super|krass|genial|nice|gefällt)/)) {
-            answer = "Danke! Das freut mich sehr ??";
-        } else if(q.match(/(witz|joke|lachen|scherz)/)) {
-            answer = jokes[Math.floor(Math.random()*jokes.length)];
-        } else if(q.match(/(funfact|fakt|fakten|wissen|tipp)/)) {
-            answer = funfacts[Math.floor(Math.random()*funfacts.length)];
-        } else if(q.match(/(dark|hell|mode|dunkel|theme|farbe)/)) {
-            answer = "Klicke oben rechts auf den Dark Mode Button, um das Design zu wechseln! ?? / ??";
-        } else if(q.match(/(easter|konami|geheim|cheat)/)) {
-            answer = "Druecke auf deiner Tastatur: ? ? ? ? ? ? ? ? B A ... ??";
-        }
-        chatbotBotMsg(answer);
-    }
     </script>
 </body>
 </html>
