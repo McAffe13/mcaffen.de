@@ -1,84 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gaming Berlin – Server Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Affen Server</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: #232323;
+            color: #EDEDED;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
             margin: 0;
-            background: #0d0d0d;
-            color: #f2f2f2;
+            padding: 0;
         }
         header {
-            background: #1a1a1a;
-            padding: 20px;
-            text-align: center;
+            background: #2e2e2e;
+            padding: 30px 0 10px 0;
         }
-        nav {
-            background: #111;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 15px;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
+        h1 {
+            margin: 10px 0;
+            font-size: 2.8em;
         }
-        .content {
-            padding: 20px;
-        }
-        .card {
-            background: #1b1b1b;
-            padding: 20px;
+        .subtext {
+            color: #bada55;
+            font-size: 1.4em;
             margin-bottom: 20px;
-            border-radius: 8px;
+        }
+        main {
+            margin-top: 30px;
+            padding: 20px;
+        }
+        .ip-box {
+            display: inline-block;
+            background: #333;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.3em;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         footer {
-            background: #1a1a1a;
-            padding: 10px;
-            text-align: center;
             margin-top: 40px;
+            color: #888;
+            font-size: 0.98em;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Gaming Berlin – Offizielle Serverseite</h1>
-        <p>Infos • Updates • Shop</p>
+        <!-- Logo einfügen: siehe Anleitung unten -->
+        <img src="Minecraft-Affen.png" class="logo" alt="Minecraft Affen Logo">
+        <h1>Minecraft Affen Server</h1>
+        <div class="subtext">Dein Platz für echte Minecraft-Affenaction 🐵</div>
     </header>
-
-    <nav>
-        <a href="#">Start</a>
-        <a href="#">News</a>
-        <a href="#">Regeln</a>
-        <a href="#">Shop</a>
-        <a href="#">Kontakt</a>
-    </nav>
-
-    <div class="content">
-        <div class="card">
-            <h2>Neuigkeiten</h2>
-            <p>Hier kannst du Updates zu deinem Server eintragen.</p>
+    <main>
+        <h2>Willkommen auf unserem Server!</h2>
+        <p>
+            Bau, erkunde und spiele gemeinsam mit anderen Minecraft-Fans.<br>
+            Unsere Community freut sich auf dich!
+        </p>
+        <div class="ip-box">
+            <strong>Server-IP:</strong> <span>mcaffen.de</span>
         </div>
-
-        <div class="card">
-            <h2>Shop</h2>
-            <p>Hier kannst du Shop‑Items hinzufügen oder Preise ändern.</p>
-        </div>
-
-        <div class="card">
-            <h2>Server-Regeln</h2>
-            <p>Dieser Bereich ist für deine Regeln oder Richtlinien.</p>
-        </div>
-    </div>
-
+    </main>
     <footer>
-        © 2025 Gaming Berlin – Alle Rechte vorbehalten
+        &copy; 2025 Minecraft Affen. Nicht offiziell mit Mojang/Minecraft verbunden.
     </footer>
 </body>
 </html>
