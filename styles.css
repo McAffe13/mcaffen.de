@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@700&display=swap');
+
+:root {
+    --bg-main: linear-gradient(135deg, #34e4ff 0%, #8be8ff 70%, #0c3771 100%);
+    --fg-main: #053343;
+    --accent: #00d9d9;
+    --primary: #27b1ec;
+    --glass: rgba(255,255,255,0.60);
+    --card-bg: rgba(255,255,255,0.96);
+}
+html[data-theme='dark'] {
+    --bg-main: linear-gradient(135deg, #122833 0%, #064285 60%, #008597 100%);
+    --fg-main: #e2fdfe;
+    --accent: #cafffd;
+    --primary: #00eaff;
+    --card-bg: rgba(20,37,50,0.98);
+    --glass: rgba(20,37,50,0.55);
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-main) fixed;
+    color: var(--fg-main);
+    font-family: 'Montserrat', Arial, sans-serif;
+    transition: background 0.35s, color .32s;
+}
+.toggle-btn {
+    position: fixed;
+    right: 24px;
+    top: 18px;
+    z-index: 120;
+    font-size: 1.08rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 15px #8cdcff60;
+    transition: background 0.15s, transform 0.18s;
+}
+.toggle-btn:hover {
+    background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
+    transform: scale(1.08) rotate(-2deg);
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(22,57,80, 0.96);
+    box-shadow: 0 7px 38px #198bb888;
+    padding: .5em 2em;
+    margin-bottom:24px;
+}
+.logo-nav {
+    display: flex;
+    align-items: center;
+    gap: .8em;
+}
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    border: 3px solid var(--primary);
+    background: #fffefc80;
+    box-shadow: 0 2px 8px #18e4f889;
+    object-fit: cover;
+    image-rendering: pixelated;
+    transition: box-shadow .23s, border .23s;
+}
+.logo:hover {
+    box-shadow: 0 12px 26px 0 var(--primary), 0 8px 28px #90fcffc0;
+    border: 3.5px solid var(--accent);
+}
+.nav-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 2em;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-shadow: 0px 2px 16px #0ae8d3;
+    font-weight: bold;
+}
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 1.3em;
+    margin: 0;
+    align-items: center;
+}
+.navbar li {
+    margin: 0;
+}
+.nav-btn {
+    font-family: inherit;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: none;
+    padding: 0.6em 1.1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    outline: none;
+    transition: background 0.14s, color 0.19s, transform 0.21s, box-shadow 0.16s;
+}
+.nav-btn:hover, .nav-btn:focus {
+    background: linear-gradient(95deg, var(--primary) 60%, var(--accent) 120%);
+    color: #073343;
+    box-shadow: 0 5px 18px #21ecf640, 0 1.5px 8px #0bdae493;
+    transform: translateY(-3px) scale(1.06);
+}
+.navbar .discord {
+    background: linear-gradient(90deg,#5d8dee 60%,#27e4e0 100%)!important;
+    color: #fff!important;
+    box-shadow: 0 2px 13px #319af7b0 inset;
+}
+.navbar .discord:hover {
+    color: #16214d !important;
+}
+/* HERO */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3em 1em 1em;
+    position: relative;
+}
+.hero-logo {
+    width: 89px;
+    height: 89px;
+    margin-bottom: 1.2em;
+    border-radius: 18px;
+    border: 2.5px solid var(--primary);
+    background: #eeffffc0;
+    object-fit: cover;
+    box-shadow: 0 0 17px var(--accent);
+}
+h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 2.1em;
+    color: #073343;
+    letter-spacing: 1px;
+    margin-bottom: .178em;
+}
+.highlight {
+    color: var(--primary);
+    text-shadow: 0 2px 9px #13aaf1b0;
+}
+.subtitle {
+    color: #085562;
+    font-size: 1.21em;
+    margin-bottom: 1.3em;
+    text-shadow: 0 1px 13px #65feff11;
+}
+.server-ip-block {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(96deg, #ccfbfa 50%, #7bf3ffba 97%);
+    padding: .7em 1em;
+    border-radius: 11px;
+    margin-bottom: 1.28em;
+    box-shadow: 0 6px 18px #089ff855;
+    gap: .7em;
+    font-size: 1.13em;
+}
+.server-ip-block input {
+    background: #fff;
+    color: #053343;
+    border: 1.2px solid var(--primary);
+    font-family: inherit;
+    font-size: 1.09em;
+    border-radius: 7px;
+    padding: .35em 1em;
+    width: 160px;
+    text-align: center;
+    font-weight: bold;
+}
+.ip-label {
+    color: #0899ae;
+    background: #e6feff;
+    border-radius: 11px;
+    padding: .28em .7em;
+    font-weight: bold;
+    font-size: 1em;
+    margin-right: .16em;
+}
+/* FANCY BUTTONS */
+.fancy-btn {
+    font-family: inherit;
+    background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
+    color: #fff;
+    border: none;
+    padding: .62em 2em;
+    margin: 0 .18em;
+    border-radius: 13px;
+    font-size: 1.15em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 21px #30eaff4a;
+    text-shadow: 0 1px 6px #00f7fb6b;
+    border-bottom: 3.5px solid var(--primary);
+    transition: background 200ms, transform 140ms cubic-bezier(.68,-0.55,.27,1.55), box-shadow .13s;
+    outline: none;
+    margin-bottom: 0.7em;
+}
+.fancy-btn:hover, .fancy-btn:focus {
+    background: linear-gradient(90deg, var(--accent) 65%, var(--primary) 100%);
+    color: #046fb6;
+    transform: scale(1.09) translateY(-3px) rotate(-2deg);
+    box-shadow: 0 14px 52px #17e9f9ab;
+    border-bottom: 3.5px solid var(--accent);
+}
+.join-btn {
+    margin-top: 1.17em;
+    font-size: 1.19em;
+}
+.discord-btn {
+    margin-top: 0.66em;
+    font-size: 1.13em;
+    background: linear-gradient(90deg,#5d8dee 60%,#27e4e0 100%);
+    border-bottom: 3.5px solid #217bee;
+    box-shadow: 0 8px 30px #33b2f990;
+}
+.discord-btn:hover, .discord-btn:focus {
+    background: linear-gradient(90deg,#27e4e0 60%,#5d8dee 100%);
+    color: #20273f;
+    border-bottom: 3.5px solid #27e4e0;
+    box-shadow: 0 15px 52px #37dbfc93;
+}
+main { position: relative; }
+/* Colorful/Minecraft Style Content Blocks */
+.colorblock {
+    border-radius: 19px;
+    margin: 2.0em auto;
+    max-width: 480px;
+    padding: 2em 2em;
+    box-shadow: 0 6px 30px #15e4e04e;
+    font-size: 1.087em;
+    background: var(--card-bg);
+    backdrop-filter: blur(1px);
+    position: relative;
+    animation: fadeInBlock 1s both;
+    transition: box-shadow 0.13s, background 0.21s;
+}
+@keyframes fadeInBlock {
+    from {opacity: 0; transform: translateY(35px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+.colorblock:hover {
+    box-shadow: 0 13px 34px #2be3faad, 0 1.2px 2px #81e0e1;
+    background: var(--glass);
+    transform: scale(1.012);
+}
+.rules { border-left: 9px solid var(--accent); }
+.rules a { color: var(--primary); font-weight: bold; text-decoration: underline; }
+.rules a:hover { color: var(--accent);}
+.team { border-left: 9px solid var(--primary); }
+.team-list { padding-left: 1.0em; }
+.kontakt { border-left: 9px solid var(--primary); }
+.kontakt a { color: var(--accent); }
+.discord { border-left: 9px solid #5d8dee; background: #e5f2fd !important;}
+.discord h2 { color: #5d8dee; }
+footer {
+    background: #072242c9;
+    color: #e8fafd;
+    padding: 1.1em 0;
+    text-align: center;
+    margin-top: 3.5em;
+    font-size: 1.05em;
+    z-index: 2;
+    position: relative;
+}
+footer a {
+    color: #bcefff;
+    text-decoration: none;
+    font-weight: bold;
+    opacity: 0.82;
+}
+footer a:hover {
+    color: var(--accent);
+    opacity: 1;
+}
+/* Responsiv */
+@media (max-width: 700px) {
+    nav, .navbar{flex-direction:column; align-items:flex-start;}
+    .navbar{gap:0; width:100%;padding-left:0;}
+    .navbar li {width:100%;}
+    .navbar a, .navbar > li {display:block;width:100%;}
+    .logo-nav,.nav-title{margin-bottom:.33em;}
+    main { padding: 0 0.2em;}
+}
+@media (max-width: 500px) {
+    .hero-logo { width: 61px; height: 61px;}
+    header h1 { font-size: 1.09em;}
+    .colorblock { padding:1.1em 0.33em; font-size:.99em;}
+    nav { padding: .3em 0.1em; }
+}
