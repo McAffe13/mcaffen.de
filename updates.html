@@ -259,9 +259,29 @@
             box-shadow: 0 5px 19px #15eaff35;
             transform: scale(1.04) rotate(-1deg);
         }
-        /* Kontakt und Discord */
-        .card-contact { border-left: 7px solid var(--primary);}
+        /* Updates und Discord */
+        .card-updates {
+            border-left: 9px solid var(--primary);
+            grid-column: 1 / -1;
+            padding: 50px 20px;
+            font-size: 1.05rem;
+            border-radius: 20px;
+            box-shadow: 0 22px 64px rgba(15,130,170,0.12);
+        }
+        .card-updates h2 {
+            font-size: 1.6rem;
+            margin-bottom: .6rem;
+        }
+        .card-updates p {
+            font-size: 1.08rem;
+            line-height: 1.6;
+            color: var(--main-fg);
+        }
+        @media (max-width: 900px) {
+            .card-updates { padding: 28px 16px; }
+        }
         .card-discord { border-left: 7px solid #5d8dee; background: #e5f2fdcc !important;}
+        .footer-ip { display:flex; gap:12px; justify-content:center; align-items:center; margin-top:10px; }
         .discord-btn {
             margin-top: .8em;
             background: linear-gradient(90deg,#5d8dee 60%,#27e4e0 100%);
@@ -327,49 +347,28 @@
     </nav>
     <!-- HEADER / Hero -->
     <header id="home">
-        <img src="assets/Minecraft-Affen.png" alt="McAffen Affe" class="logo-main" />
-        <h1>Willkommen auf McAffen.de!</h1>
-        <p class="subtitle">Der Minecraft-Server für Affen, Bananen und Spaß – join jetzt!</p>
-        <span class="mc-ip" id="mc-ip">play.McAffen.de</span>
-        <button class="fancy-btn" onclick="copyIP(this)">IP kopieren</button>
+        <!-- Header simplified: image and title removed per request -->
     </header>
     <!-- Main grid für Cards -->
     <div class="main-grid">
-        <section class="card" id="regelwerk">
-            <h2>Regelwerk 📜</h2>
-            <ul style="text-align:left;max-width:340px;margin:16px auto 0 auto;font-size:1.08rem;line-height:1.7;">
-                <li>Kein Griefing, kein Hacking – bleib ein feiner Affe!</li>
-                <li>Respektvoll, freundlich, Helfen => Spaß!</li>
-                <li>Folge dem Team & glaube an die Banane 🍌</li>
-            </ul>
-        </section>
-        <section class="card" id="team">
-            <h2>Das Team 👑</h2>
-            <div class="team-list">
-                <div class="team-member"><span>McAffe13</span><div>Owner</div></div>
-                <div class="team-member"><span>Foox</span><div>Owner</div></div>
-                <div class="team-member"><span>Quenten</span><div>Admin</div></div>
-                <div class="team-member"><span>Phoenix</span><div>Developer</div></div>
-                <div class="team-member"><span>SniperJohnny_yt</span><div>Developer/Admin</div></div>
-            </div>
-        </section>
-    </div>
-    <section class="card card-contact" id="kontakt">
-        <h2>Kontakt 📧</h2>
+    <section class="card card-updates" id="updates">
+        <h2>Updates</h2>
         <p>
-            Fragen oder Feedback?<br>
-            Schreibe uns an <a href="mailto:support@mcaffen.de">support@mcaffen.de</a><br>
+            Unser Server ist im vollen gange Damit wir weiterachen können brauchen wir eure hilfe.<br>
+            Bewerbe dich Jetzt!!! <a href="https://discord.gg/adBCjuxnfS" target="_blank">Zum Discord</a><br>
+            <br><br><br>
         </p>
+    
+    
+    
     </section>
-    <section class="card card-discord" id="discord">
-        <h2>Discord 💬</h2>
-        <p>Werde Teil der Affenbande auf unserem Discord!</p>
-        <a href="https://discord.gg/adBCjuxnfS" class="discord-btn" target="_blank">Zum Discord</a>
-    </section>
+    </div>
     <footer>
-        <small>© 2025 McAffen.de | <a href="#regelwerk">Regelwerk</a> | <a href="#team">Team</a> | 
-            <a href="#kontakt">Kontakt</a> | <a href="#discord">Discord</a>
-        </small>
+        <div class="footer-ip">
+            <span class="mc-ip" id="mc-ip">play.McAffen.de</span>
+            <button class="fancy-btn" onclick="copyIP(this)">IP kopieren</button>
+        </div>
+        <small>© 2025 McAffen.de</small>
     </footer>
     <script>
         // DARK MODE
