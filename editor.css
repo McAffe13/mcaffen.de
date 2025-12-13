@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(135deg,#36e2ec,#004e76);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 40px 10px;
+}
+
+.card-updates {
+    max-width: 1000px;
+    margin: auto;
+    background: rgba(255,255,255,0.96);
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.25);
+}
+
+.hint {
+    font-size: .85rem;
+    opacity: .6;
+}
+
+.post-wrapper {
+    margin-bottom: 24px;
+}
+
+.toolbar {
+    display: none;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.admin .toolbar {
+    display: flex;
+}
+
+.toolbar button,
+.toolbar input[type="file"] {
+    background: linear-gradient(90deg,#27b1ec,#00d9d9);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toolbar .move {
+    background: linear-gradient(90deg,#7a7aff,#4f4fff);
+}
+
+.toolbar .delete {
+    background: linear-gradient(90deg,#ff5f5f,#ff2f2f);
+}
+
+.post {
+    background: #f6feff;
+    border-left: 6px solid #27b1ec;
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.post[contenteditable="true"] {
+    outline: 2px dashed #27b1ec;
+    background: #e8fcff;
+}
+
+.post img {
+    display: block;
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.main-btn {
+    margin-top: 10px;
+    background: linear-gradient(90deg,#27b1ec,#00d9d9);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
